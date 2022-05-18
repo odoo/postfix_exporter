@@ -396,7 +396,7 @@ func (e *PostfixExporter) CollectFromLogLine(line string) {
 		}
 	case "opendkim":
 		if opendkimMatches := opendkimSignatureAdded.FindStringSubmatch(remainder); opendkimMatches != nil {
-			e.opendkimSignatureAdded.WithLabelValues(opendkimMatches[1], opendkimMatches[2]).Inc()
+			e.opendkimSignatureAdded.WithLabelValues("", "").Inc()
 		} else {
 			e.addToUnsupportedLine(line, process)
 		}
